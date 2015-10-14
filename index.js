@@ -7,13 +7,29 @@ var stream = T.stream('user', {});
 var tweetQueue = [];
 
 stream.on('tweet', function (tweet) {
-	var text = tweet.user.name + ', ' + tweet.text;
-	tweetQueue.push(text);
+	if (tweet.retweeted_status != undefined) return;
+	tweetQueue.push(tweet);
 });
 
 function nextTweet() {
-	var text = tweetQueue.shift();
-	if (text != undefined) say.speak('Kyoko', text, nextTweet);
+	var tweet = tweetQueue.shift();
+	if (tweet != undefined) {
+		var text = tweet.user.name + ', ' + tweet.text;
+		
+		if (tweet.entities != undefined) {
+			tweet.entities.urls.forEach(function (url) {
+				text = text.replace(url.url, ' リンク ');
+			});
+		}
+		
+		if (tweet.extended_entities != undefined) {
+			tweet.extended_entities.media.forEach(function (media) {
+				text = text.replace(media.url, ' 画像 ');
+			});
+		}
+		
+		say.speak('Kyoko', text, nextTweet);
+	}
 	else setTimeout(nextTweet, 800);
 }
 
