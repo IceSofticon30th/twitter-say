@@ -1,0 +1,27 @@
+{
+  "name": "twitter-say",
+  "version": "1.0.0",
+  "description": "Speak Your Twitter Timeline",
+  "main": "index.js",
+  "dependencies": {
+    "say": "^0.6.0",
+    "twit": "^2.1.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/IceSofticon30th/twitter-say.git"
+  },
+  "keywords": [
+    "Twitter"
+  ],
+  "author": "IceSofticon30th",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/IceSofticon30th/twitter-say/issues"
+  },
+  "homepage": "https://github.com/IceSofticon30th/twitter-say"
+}
