@@ -1,4 +1,4 @@
-var say = require('say');
+﻿var say = require('winsay');
 var Twit = require('twit');
  
 var T = new Twit(require('./keys.json'));
@@ -28,7 +28,7 @@ function nextTweet() {
 			});
 		}
 		
-		say.speak('Kyoko', text, nextTweet);
+		say.speak(null, text, nextTweet);
 	}
 	else setTimeout(nextTweet, 800);
 }
